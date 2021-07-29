@@ -23,6 +23,7 @@ MOVIES_API_URL = "https://api.themoviedb.org/3/search/movie"
 
 
 class Movie(db.Model):
+    __tablename__ = "movie"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60), unique=True, nullable=False)
     year = db.Column(db.Integer, nullable=False)
@@ -133,5 +134,5 @@ def delete():
 
 
 if __name__ == '__main__':
-    # db.create_all()
+    db.create_all()
     app.run()
