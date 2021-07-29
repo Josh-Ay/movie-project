@@ -4,8 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from os import urandom, environ
+from os import urandom, getenv
 import requests
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
@@ -15,7 +16,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 Bootstrap(app)
 db = SQLAlchemy(app)
 
-MOVIES_API_KEY = environ["API_KEY"]
+load_dotenv()
+
+MOVIES_API_KEY = getenv("API_KEY")
 MOVIES_API_URL = "https://api.themoviedb.org/3/search/movie"
 
 
