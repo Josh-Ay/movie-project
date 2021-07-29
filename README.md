@@ -1,5 +1,7 @@
 Simple web application made with Flask.
 
+
+To preview the [site](https://ayoola-top-movies.herokuapp.com/) click [here](https://ayoola-top-movies.herokuapp.com/).
 ## How It Works
 ![](./resources/video.gif)
 
