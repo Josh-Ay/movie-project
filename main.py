@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("POSTGRE_DATABASE_URL", "sqlite:///movies-collection.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("DATABASE_URL", "sqlite:///movies-collection.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
@@ -133,5 +133,5 @@ def delete():
 
 
 if __name__ == '__main__':
-    db.create_all()
+    # db.create_all()
     app.run()
