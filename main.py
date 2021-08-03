@@ -38,6 +38,9 @@ class Movie(db.Model):
         return '<Movie %r>' % self.title
 
 
+db.create_all()
+
+
 class RateMovieForm(FlaskForm):
     rating = StringField("Your Rating Out of 10 e.g 7.5", validators=[DataRequired()])
     review = StringField("Your Review", validators=[DataRequired()])
