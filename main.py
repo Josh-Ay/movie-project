@@ -4,16 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-from os import urandom, getenv
+from os import getenv, environ
 import requests
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = urandom(32)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("POSTGRE_DATABASE_URL")
+app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("POSTGRE_DATABASE_URL", 'sqlite:///movies-collection.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
