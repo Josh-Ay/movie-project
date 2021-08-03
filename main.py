@@ -50,12 +50,13 @@ class AddMovieForm(FlaskForm):
 
 @app.route("/")
 def home():
-    all_movies = Movie.query.order_by(Movie.rating).all()
+    all_movies = Movie.query.all()
+    # all_movies = Movie.query.order_by(Movie.rating).all()
 
-    for movie_index in range(len(all_movies)):
-        all_movies[movie_index].ranking = len(all_movies) - movie_index
+    # for movie_index in range(len(all_movies)):
+    #     all_movies[movie_index].ranking = len(all_movies) - movie_index
 
-    db.session.commit()
+    # db.session.commit()
 
     return render_template("index.html", movies=all_movies)
 
@@ -134,5 +135,5 @@ def delete():
 
 
 if __name__ == '__main__':
-    db.create_all()
+    # db.create_all()
     app.run()
