@@ -8,15 +8,16 @@ from os import urandom, getenv, environ
 import requests
 from dotenv import load_dotenv
 
+load_dotenv()
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('sqlite:///movies-collection.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('POSTGRE_DATABASE_URL', 'SQL_LITE_DB')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
 db = SQLAlchemy(app)
 
-load_dotenv()
 
 MOVIES_API_KEY = getenv("API_KEY")
 MOVIES_API_URL = "https://api.themoviedb.org/3/search/movie"
