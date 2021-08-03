@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('POSTGRE_DATABASE_URL', 'sqlite:///movies-collection.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('sqlite:///movies-collection.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
@@ -50,13 +50,12 @@ class AddMovieForm(FlaskForm):
 
 @app.route("/")
 def home():
-    all_movies = Movie.query.all()
-    # all_movies = Movie.query.order_by(Movie.rating).all()
+    all_movies = Movie.query.order_by(Movie.rating).all()
 
-    # for movie_index in range(len(all_movies)):
-    #     all_movies[movie_index].ranking = len(all_movies) - movie_index
+    for movie_index in range(len(all_movies)):
+        all_movies[movie_index].ranking = len(all_movies) - movie_index
 
-    # db.session.commit()
+    db.session.commit()
 
     return render_template("index.html", movies=all_movies)
 
