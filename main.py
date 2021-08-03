@@ -38,7 +38,7 @@ class Movie(db.Model):
         return '<Movie %r>' % self.title
 
 
-db.create_all()
+# db.create_all()
 
 
 class RateMovieForm(FlaskForm):
