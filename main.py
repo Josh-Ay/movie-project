@@ -12,7 +12,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = urandom(32)
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('SQL_LITE_DB')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies-collection.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
