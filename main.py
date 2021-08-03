@@ -12,7 +12,7 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("DATABASE_URL").replace("://", "ql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('sqlite:///movies-collection.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
