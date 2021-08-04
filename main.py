@@ -23,6 +23,8 @@ MOVIES_API_KEY = getenv("API_KEY")
 MOVIES_API_URL = "https://api.themoviedb.org/3/search/movie"
 
 
+db.create_all()
+
 class Movie(db.Model):
     __tablename__ = "movie"
     id = db.Column(db.Integer, primary_key=True)
