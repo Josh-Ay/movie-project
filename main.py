@@ -23,8 +23,6 @@ MOVIES_API_KEY = getenv("API_KEY")
 MOVIES_API_URL = "https://api.themoviedb.org/3/search/movie"
 
 
-db.create_all()
-
 class Movie(db.Model):
     __tablename__ = "movie"
     id = db.Column(db.Integer, primary_key=True)
@@ -38,6 +36,9 @@ class Movie(db.Model):
 
     def __repr__(self):
         return '<Movie %r>' % self.title
+
+
+db.create_all()
 
 
 class RateMovieForm(FlaskForm):
